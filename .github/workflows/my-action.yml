@@ -28,7 +28,7 @@
        - name: Sync Branches
          run: |
            for branch in $(git branch --all | grep -v HEAD); do
-             echo ${branches#remotes/origin/}
+             echo WEEEEEEEEEEEEEEEEEEEE ${branches#remotes/origin/}
              git checkout ${branches#remotes/origin/}
              git merge destination/${branches#remotes/origin/}
              git push destination HEAD
