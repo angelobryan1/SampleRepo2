@@ -29,8 +29,10 @@
        - name: Sync Branches
          run: |
            for branch in $(git branch --all | grep -v HEAD); do
-             echo WEEEEEEEEEEEEEEEEEEEE ${branches#remotes/origin/}
-             git checkout ${branches#remotes/origin/}
-             git merge destination/${branches#remotes/origin/}
-             git push destination HEAD
+             if git rev-parse --quiet --verify destination/$branch; then
+               git merge destination/$branch --allow-unrelated-histories -m "Merge changes from destination repository"
+               git push destination HEAD
+             else
+               echo "Branch $branch does not exist in the destination reepository."
+             fi
            done
