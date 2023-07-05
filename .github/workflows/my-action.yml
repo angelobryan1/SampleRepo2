@@ -14,12 +14,21 @@
        - name: Checkout source code
          uses: actions/checkout@v2
          with:
-           repository: https://github.com/angelobryan1/SampleRepoOne.git
+           repository: angelobryan1/SampleRepoOne
            ref: main
-          
-          
-       - name: Push changes to target repository
+       
+       - name: Set Git config and authentication
          run: |
-           cd ${{ github.workspace }}
+           git config --global user.name "angelobryan1"
+           git config --global user.email "angelo072394@gmail.com"
            git remote add target https://github.com/angelobryan1/SampleRepo2.git
+           git config --global credential.helper store
+           echo "https://github.com:${{secrets.PAT_TOKEN }}" > ~/.git-credentials
+           git config --global credential.helper 'store --file ~/.git-credentials'
+           
+       - name: Change directory to workspace
+         run: cd ${{ github.workspace }}
+          
+       - name: Push changes
+         run: |
            git push target HEAD:main
