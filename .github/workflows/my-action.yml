@@ -22,6 +22,9 @@
            git config --global user.name "angelobryan1"
            git config --global user.email "angelo072394@gmail.com"
            git remote add target https://github.com/angelobryan1/SampleRepo2.git
+           git config --global credential.helper store
+           echo "https://github.com:${{secrets.PAT_TOKEN }}" > ~/.git-credentials
+           git config --global credential.helper 'store --file ~/.git-credentials'
            
        - name: Change directory to workspace
          run: cd ${{ github.workspace }}
