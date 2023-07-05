@@ -1,0 +1,26 @@
+ name: Sync Code Changes
+
+
+ on:
+   push:
+     branches:
+       - main
+
+ jobs:
+   sync:
+     runs-on: ubuntu-latest
+    
+    
+   steps:
+     - name: Checkout source code
+       uses: actions/checkout@v2
+       with:
+         repository: https://github.azc.ext.hp.com/QCS-POTracker/Repo_SampleOne.git
+         ref: main
+          
+          
+     - name: Push changes to target repository
+       run: |
+         cd ${{ github.workspace }}
+         git remote add target https://github.azc.ext.hp.com/angeloorg/Repo_SampleTwo.git
+         git push target HEAD:main
