@@ -15,12 +15,12 @@
      - name: Checkout source code
        uses: actions/checkout@v2
        with:
-         repository: https://github.azc.ext.hp.com/QCS-POTracker/Repo_SampleOne.git
+         repository: https://github.com/angelobryan1/SampleRepoOne.git
          ref: main
           
           
      - name: Push changes to target repository
        run: |
          cd ${{ github.workspace }}
-         git remote add target https://github.azc.ext.hp.com/angeloorg/Repo_SampleTwo.git
+         git remote add target https://github.com/angelobryan1/SampleRepo2.git
          git push target HEAD:main
