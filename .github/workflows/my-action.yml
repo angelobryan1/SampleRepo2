@@ -20,7 +20,7 @@
            git config --global user.email "angelo072394@gmail.com"
         
        - name: Add Destination Remote
-         run: git remote add destination ${{ secrets.DESTINATION_REPO }}
+         run: git remote add destination https://github.com/angelobryan1/SampleRepo2.git
            
        - name: Fetch Destination Branches
          run: git fetch destination
