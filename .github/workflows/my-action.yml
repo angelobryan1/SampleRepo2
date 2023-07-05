@@ -14,7 +14,7 @@
        - name: Checkout source code
          uses: actions/checkout@v2
          with:
-           repository: 'https://github.com/angelobryan1/SampleRepoOne.git'
+           repository: angelobryan1/SampleRepoOne
            ref: main
           
           
