@@ -13,22 +13,22 @@
      steps:
        - name: Checkout source code
          uses: actions/checkout@v2
-         with:
-           repository: angelobryan1/SampleRepoOne
-           ref: main
        
        - name: Set Git config and authentication
          run: |
            git config --global user.name "angelobryan1"
            git config --global user.email "angelo072394@gmail.com"
-           git remote add target https://github.com/angelobryan1/SampleRepo2.git
-           git config --global credential.helper store
-           echo "https://github.com:${{secrets.PAT_TOKEN }}" > ~/.git-credentials
-           git config --global credential.helper 'store --file ~/.git-credentials'
+        
+       - name: Add Destination Remote
+           git remote add destination ${{ secrets.DESTINATION_REPO }}
            
-       - name: Change directory to workspace
-         run: cd ${{ github.workspace }}
-          
-       - name: Push changes
+       - name: Fetch Destination Branches
+         run: git fetch destination
+         
+       - name: Sync Branches
          run: |
-           git push target HEAD:main
+           for branch in $(git branch --all | grep -v HEAD); do
+             git checkout ${branches#remotes/origin/}
+             git merge destination/${branches#remotes/origin/}
+             git push destination HEAD
+           done
