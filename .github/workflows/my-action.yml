@@ -3,24 +3,23 @@
 
  on:
    push:
-     branches:
-       - main
+     branches: [ "main" ]
 
  jobs:
    sync:
      runs-on: ubuntu-latest
     
     
-   steps:
-     - name: Checkout source code
-       uses: actions/checkout@v2
-       with:
-         repository: https://github.com/angelobryan1/SampleRepoOne.git
-         ref: main
+     steps:
+       - name: Checkout source code
+         uses: actions/checkout@v2
+         with:
+           repository: https://github.com/angelobryan1/SampleRepoOne.git
+           ref: main
           
           
-     - name: Push changes to target repository
-       run: |
-         cd ${{ github.workspace }}
-         git remote add target https://github.com/angelobryan1/SampleRepo2.git
-         git push target HEAD:main
+       - name: Push changes to target repository
+         run: |
+           cd ${{ github.workspace }}
+           git remote add target https://github.com/angelobryan1/SampleRepo2.git
+           git push target HEAD:main
