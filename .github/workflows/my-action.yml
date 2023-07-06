@@ -16,7 +16,11 @@
          with:
            repository: angelobryan1/SampleRepo2
            ref: main
-           
+       
+       - name: Configure SSH
+         uses: webfactory/ssh-agent@v0.5.3
+         with:
+           ssh-private-key: ${{ secrets.SSH_PRRIVATE_KEY }}
          
        - name: Merge Source Repository into Destination
          run: |
