@@ -16,7 +16,16 @@
          with:
            repository: angelobryan1/SampleRepo2
            ref: main
-           
+       
+       - name: Configure SSH
+         run: |
+           mkdir -p ~/.ssh
+           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+           chmod 600 ~/.ssh/id_rsa
+           ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+       
+       - name: Run SSH command
+         run: ssh $SSH_USERNAME@$SSH_HOST 'echo "Hello, world!"'
          
        - name: Merge Source Repository into Destination
          run: |
