@@ -15,8 +15,4 @@
          uses: actions/checkout@v2
        
        - name: Trigger Workflow in Repo A
-         uses: octokit/request-action@v2.x
-         with:
-           route: POST /repos/angelobryan1/SampleRepo2/dispatches
-           token: ${{ secrets.REPO_A_ACCESS_TOKEN }}
-           event_type: repo-b-push-event
+         uses: angelobryan1/SampleRepo2/.github/workflows/Repo2actions.yml
