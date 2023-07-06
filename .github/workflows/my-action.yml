@@ -19,7 +19,10 @@
            
          
        - name: Merge Source Repository into Destination
-         run: git merge main
+         run: |
+           git remote add source angelobryan1/SampleRepoOne
+           git fetch source
+           git merge source/main
          
        - name: Push Merged Changes
          run: git push origin main
