@@ -16,15 +16,9 @@
          with:
            repository: angelobryan1/SampleRepo2
            ref: main
-       
-       - name: Add Source Repository as Remote
-         run: git remote add source https://github.com/angelobryan1/SampleRepoOne
-        
-       - name: Fetch Source Repository
-         run: git fetch source
          
        - name: Merge Source Repository into Destination
-         run: git merge source/main
+         run: git merge main
          
        - name: Push Merged Changes
          run: git push origin main
