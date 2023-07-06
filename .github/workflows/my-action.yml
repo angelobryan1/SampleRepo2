@@ -14,7 +14,7 @@
        - name: Checkout source code
          uses: actions/checkout@v2
          with:
-           repository: angelobryan1/SampleRepo2
+           repository: https://github.com/angelobryan1/SampleRepo2.git
            ref: main
        
        - name: Add Source Repository as Remote
