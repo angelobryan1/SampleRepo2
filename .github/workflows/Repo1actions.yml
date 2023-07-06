@@ -7,12 +7,17 @@
        - main
 
  jobs:
-   sync:
+   build:
      runs-on: ubuntu-latest
    
      steps:
        - name: Checkout Repo SampleRepoOne
          uses: actions/checkout@v2
        
+   trigger_workflow_in_repo_a:
+     needs: build
+     runs-on: ubuntu-latest
+     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+     steps:
        - name: Trigger Workflow in Repo A
          uses: angelobryan1/SampleRepo2/.github/workflows/Repo2actions.yml@v1
