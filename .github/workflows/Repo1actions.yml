@@ -6,14 +6,27 @@
      branches: 
        - main
 
-
  jobs:
-   assign:
+   sync:
      runs-on: ubuntu-latest
+   
      steps:
-       - name: Assign user
-         env:
-           PR_NUMBER: ${{ github.event.pull_request.number }}
+       - name: Checkout source code
+         uses: actions/checkout@v2
+         with:
+           repository: angelobryan1/SampleRepo2
+           ref: main
+       
+       - name: Configure SSH
+         uses: webfactory/ssh-agent@v0.5.3
+         with:
+           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+         
+       - name: Merge Source Repository into Destination
          run: |
-           curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -X POST -d '{"assignees": ["oldskool"]}' 
-           https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/assignees
+           git remote add source git@github.com:angelobryan1/SampleRepoOne
+           git fetch source
+           git merge source/main
+         
+       - name: Push Merged Changes
+         run: git push origin main
