@@ -23,9 +23,6 @@
        - name: Fetch Source Repository
          run: git fetch source
          
-       - name: Merge Source Repository
-         run: git fetch source
-         
        - name: Merge Source Repository into Destination
          run: git merge source/main
          
