@@ -15,4 +15,4 @@
          uses: actions/checkout@v2
        
        - name: Trigger Workflow in Repo A
-         uses: angelobryan1/SampleRepo2/.github/workflows/Repo2actions.yml
+         uses: angelobryan1/SampleRepo2/.github/workflows/Repo2actions.yml@v1
