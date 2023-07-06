@@ -20,7 +20,7 @@
          
        - name: Merge Source Repository into Destination
          run: |
-           git remote add source angelobryan1/SampleRepoOne
+           git remote add source git@github.com:angelobryan1/SampleRepoOne
            git fetch source
            git merge source/main
          
