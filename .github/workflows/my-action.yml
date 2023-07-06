@@ -18,7 +18,7 @@
            ref: main
        
        - name: Add Source Repository as Remote
-         run: git remote add source https://github.com/angelobryan1/SampleRepoOne.git
+         run: git remote add source https://github.com/angelobryan1/SampleRepoOne
         
        - name: Fetch Source Repository
          run: git fetch source
