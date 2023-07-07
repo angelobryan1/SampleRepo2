@@ -1,14 +1,18 @@
- name: Trigger Worrkflow in Repo A
+ name: Trigger SampleRepo2
 
  on:
-   repository_dispatch:
-     types:
-       - repo-b-push-event
+   workflow_dispatch:
+   push:
+     branches:
+       - main
        
  jobs:
-  build:
+   build:
+     name: Run API
      runs-on: ubuntu-latest
      
      steps:
-       - name: Checkout SampleRepo2
-         uses: actions/checkout@v2
+       - name: Build API
+         run: |
+           echo "Build API"
+           sleeps 5s
