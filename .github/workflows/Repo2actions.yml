@@ -12,7 +12,17 @@
      runs-on: ubuntu-latest
      
      steps:
-       - name: Build API
+       - name: Fetching SampleRepoOne
          run: |
-           echo "Build API"
-           sleep 5s
+           echo "Fetching SampleRepoOne"
+           git remote add SampleRepoOne https://github.com/angelobryan1/SampleRepoOne.git
+           git fetch SampleRepoOne
+       - name: Merging SampleRepoOne
+         run: |
+           echo "Merging SampleRepoOne"
+           git merge --no-commit --no-ff SampleRepoOne/main
+       - name: Pushing
+           echo "Pushing excluding .github directory"
+           git reset .github
+           git commit -m "Merging SampleRepoOne repository"
+           git push
