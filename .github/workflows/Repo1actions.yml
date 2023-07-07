@@ -1,4 +1,4 @@
- name: Push Event
+ name: Main Repo
 
 
  on:
@@ -8,16 +8,20 @@
 
  jobs:
    build:
+     name: Sample Repo One
      runs-on: ubuntu-latest
    
      steps:
        - name: Checkout Repo SampleRepoOne
          uses: actions/checkout@v2
        
-   trigger_workflow_in_repo_a:
-     needs: build
-     runs-on: ubuntu-latest
-     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-     steps:
-       - name: Trigger Workflow in Repo A
-         uses: angelobryan1/SampleRepo2/.github/workflows/Repo2actions.yml@v1
+       - uses: convictional/trigger-workflow-and-wait@v1.3.0
+         with:
+           owner: angelobryan1
+           repo: SampleRepo2
+           github_token: ${{ secrets.G_ACCESS_TOKEN }}
+           workflow_file_name: main.yml
+       - name: Deploy SampleRepo2
+         run: |
+           echo "Deploy SampleRepo2"
+           sleep 5s
