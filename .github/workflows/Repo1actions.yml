@@ -25,4 +25,3 @@
        - name: Deploy SampleRepo2
          run: |
            echo "Deploy SampleRepo2"
-           sleep 5s
