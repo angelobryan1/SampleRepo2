@@ -15,6 +15,10 @@
        - name: Checkout repository
          uses: actions/checkout@v2
          
+       - name: Config Credential
+         run: |
+           git config --global user.email "angelo072394@gmail.com"
+           git config --global user.name "angelobryan1"
        - name: Fetching SampleRepoOne
          run: |
            echo "Fetching SampleRepoOne"
