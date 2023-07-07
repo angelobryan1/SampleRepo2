@@ -1,0 +1,18 @@
+ name: Trigger SampleRepo2
+
+ on:
+   workflow_dispatch:
+   push:
+     branches:
+       - main
+       
+ jobs:
+   build:
+     name: Run API
+     runs-on: ubuntu-latest
+     
+     steps:
+       - name: Build API
+         run: |
+           echo "Build API"
+           sleep 5s
