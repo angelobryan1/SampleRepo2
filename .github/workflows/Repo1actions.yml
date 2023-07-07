@@ -21,6 +21,7 @@
            repo: SampleRepo2
            github_token: ${{ secrets.G_ACCESS_TOKEN }}
            workflow_file_name: main.yml
+           ref: main
        - name: Deploy SampleRepo2
          run: |
            echo "Deploy SampleRepo2"
