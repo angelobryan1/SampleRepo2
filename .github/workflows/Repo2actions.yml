@@ -22,6 +22,7 @@
            echo "Merging SampleRepoOne"
            git merge --no-commit --no-ff SampleRepoOne/main
        - name: Pushing
+         run: |
            echo "Pushing excluding .github directory"
            git reset .github
            git commit -m "Merging SampleRepoOne repository"
