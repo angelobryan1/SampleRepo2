@@ -15,4 +15,4 @@
        - name: Build API
          run: |
            echo "Build API"
-           sleeps 5s
+           sleep 5s
