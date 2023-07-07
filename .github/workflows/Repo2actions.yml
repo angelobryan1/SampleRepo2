@@ -23,7 +23,7 @@
        - name: Merging SampleRepoOne
          run: |
            echo "Merging SampleRepoOne"
-           git merge --no-commit --no-ff SampleRepoOne/main
+           git merge --no-commit --allow-unrelated-histories --no-ff SampleRepoOne/main
        - name: Pushing
          run: |
            echo "Pushing excluding .github directory"
